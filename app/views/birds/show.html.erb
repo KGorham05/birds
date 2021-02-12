@@ -1,0 +1,26 @@
+<h1><%= @bird.common_name %></h1>
+<h2><%= @bird.latin_name %></h2>
+<ol>
+    <% @bird.sightings.each do |sighting| %>
+        <h3>Sightings</h3>
+        <li>
+            <ul>
+                <li>
+                    <i>What:</i> <%=sighting.description %>
+                </li>
+                <li>
+                    <i>Where:</i> <%=sighting.lat %> <%=sighting.long %>
+                </li>
+                <li>
+                    <i>When:</i> <%=sighting.created_at %>
+                </li>
+
+            </ul>
+        </li>
+        <%# add time, lat and long %>
+
+    <% end %>
+
+</ol>
+
+<%= link_to 'Back', birds_path %>
