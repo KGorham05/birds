@@ -2,7 +2,6 @@
   <% if bird.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(bird.errors.count, "error") %> prohibited this bird from being saved:</h2>
-
       <ul>
         <% bird.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,8 +9,18 @@
       </ul>
     </div>
   <% end %>
-
+  <div>
+    <%= form.label :common_name %><br>
+    <%= form.text_field :common_name %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :latin_name %><br>
+    <%= form.text_field :latin_name %>
+  </div>
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+<br>

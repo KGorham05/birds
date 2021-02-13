@@ -64,6 +64,6 @@ class SightingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sighting_params
-      params.fetch(:sighting, {})
+      params.fetch(:sighting, {}).permit(:bird_id, :lat, :long, :description)
     end
 end
