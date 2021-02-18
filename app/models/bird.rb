@@ -10,7 +10,8 @@ class Bird < ApplicationRecord
     # Associations
     has_many :sightings
     # Validations
-    validates :common_name, :latin_name, presence: true
+    validates :common_name, :latin_name, presence: true, uniqueness: { case_sensitive: false,
+        scope: [:latin_name, :common_name], message: "must be unique"}
     # Custom Validations
     validates_with MyValidator
 end

@@ -27,10 +27,8 @@ class BirdsController < ApplicationController
     respond_to do |format|
       if @bird.save
         format.html { redirect_to @bird, notice: "Bird was successfully created." }
-        format.json { render :show, status: :created, location: @bird }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @bird.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,10 +38,8 @@ class BirdsController < ApplicationController
     respond_to do |format|
       if @bird.update(bird_params)
         format.html { redirect_to @bird, notice: "Bird was successfully updated." }
-        format.json { render :show, status: :ok, location: @bird }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @bird.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +49,6 @@ class BirdsController < ApplicationController
     @bird.destroy
     respond_to do |format|
       format.html { redirect_to birds_url, notice: "Bird was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

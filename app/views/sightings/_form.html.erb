@@ -2,7 +2,6 @@
   <% if sighting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(sighting.errors.count, "error") %> prohibited this sighting from being saved:</h2>
-
       <ul>
         <% sighting.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,8 +9,21 @@
       </ul>
     </div>
   <% end %>
-
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :lat, "Latitude" %><br>
+    <%= form.text_field :lat %>
+  </div>
+  <div>
+    <%= form.label :long %><br>
+    <%= form.text_field :long %>
+  </div>
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>
+  <br>
 <% end %>

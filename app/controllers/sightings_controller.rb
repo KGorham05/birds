@@ -3,8 +3,11 @@ class SightingsController < ApplicationController
 
   # GET /sightings or /sightings.json
   def index
-    @sightings = Sighting.all
+    @sightings = Sighting.where(date: params[:start_date]..params[:end_date])
+    format.json { render json: @sightings }
   end
+
+
 
   # GET /sightings/1 or /sightings/1.json
   def show
