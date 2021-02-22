@@ -32,7 +32,7 @@ class Api::BirdsController < ApplicationController
 
     respond_to do |format|
       if @bird.save
-        format.json { render :show, status: :created, location: @bird }
+        format.json { render json: @bird, status: :created, location: @bird }
       else
         format.json { render json: @bird.errors, status: :unprocessable_entity }
       end
