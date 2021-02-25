@@ -10,9 +10,12 @@ class Api::BirdsController < Api::ApiApplicationController
 
   # GET /birds/1 or /birds/1.json
   def show
-    @bird = Bird.find(params[:id])
+    @bird = Bird.joins(:sightings).find(params[:id])
     if @bird
-      render json: @bird, status: :ok
+      render json: {
+        "bird": @bird,
+        "sightings": [@bird.sightings]
+      }, status: :ok
     else
       render json: @bird.errors, status: :unprocessable_entity
     end
