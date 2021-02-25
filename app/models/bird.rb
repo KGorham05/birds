@@ -9,6 +9,7 @@ class MyValidator < ActiveModel::Validator
 class Bird < ApplicationRecord
     # Associations
     has_many :sightings
+    accepts_nested_attributes_for :sightings
     # Validations
     validates :common_name, :latin_name, presence: true, uniqueness: { case_sensitive: false,
         scope: [:latin_name, :common_name], message: "must be unique"}
